@@ -1,0 +1,27 @@
+.header,
+.container .row .col-md-4,
+.ub-footer,
+.ads-place,
+.social-share,
+.social-share.d-inline-block {
+    display: none !important;
+}
+
+.container .row .col-md-8 {
+    flex: none;
+    max-width: 100%;
+}
+
+.container .row .col-md-8:before{
+    content: url(../img/logo.png);
+    display: block;
+    margin-bottom: 30px;
+}
+
+.post-details-slider {
+    display: inline-block;
+    width: auto;
+    height: 510px;
+}
+
+

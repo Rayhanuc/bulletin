@@ -1,17 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="Mosaddek">
-
-    <!--favicon icon-->
+    
     <?php wp_head(); ?>
 
 
 </head>
-<body>
+<body <?php body_class(  ); ?>>
 
     <!--pre header start-->
     <div class="pre-header">
@@ -49,12 +44,12 @@
                 </div>
                 <div class="col-lg-4 col-7 order-lg-1 order-1 text-lg-left text-center">
                     <a href="#" class="logo ">
-                        <img src="assets/img/logo.png" srcset="assets/img/logo@2x.png 2x" alt="">
+                        <img src="<?php echo get_template_directory_uri();?>/assets/img/logo.png" srcset="<?php echo get_template_directory_uri();?>/assets/img/logo@2x.png 2x" alt="">
                     </a>
                 </div>
                 <div class="col-lg-8 order-lg-2 order-3">
                     <a href="#" class="top-bar-ad">
-                        <img class="img-fluid" src="assets/img/top-ads.jpg" alt="">
+                        <img class="img-fluid" src="<?php echo get_template_directory_uri();?>/assets/img/top-ads.jpg" alt="">
                     </a>
                 </div>
             </div>
@@ -110,7 +105,7 @@
                 <!--news slider start-->
                 <div class="owl-carousel owl-theme ha-slider ha-nav-regular">
                     <div class="item">
-                        <img class="" src="assets/img/img-big1.jpg" alt=" " />
+                        <img class="" src="<?php echo get_template_directory_uri();?>/assets/img/img-big1.jpg" alt=" " />
                         <div class="ha-carousel-content">
                             <a href="#" class="cat">Politics</a>
                             <h2><a href="#!">China Warns Hong Kong It Will Intervene if Situation Deteriorates</a></h2>
@@ -118,7 +113,7 @@
                     </div>
 
                     <div class="item">
-                        <img class="" src="assets/img/img-big4.jpg" alt=" " />
+                        <img class="" src="<?php echo get_template_directory_uri();?>/assets/img/img-big4.jpg" alt=" " />
                         <div class="ha-carousel-content">
                             <a href="#" class="cat">Fashion</a>
                             <h2><a href="#!">Extinction Rebellion takes aim at fashion</a></h2>
@@ -126,7 +121,7 @@
                     </div>
 
                     <div class="item">
-                        <img class="" src="assets/img/img-big3.jpg" alt=" " />
+                        <img class="" src="<?php echo get_template_directory_uri();?>/assets/img/img-big3.jpg" alt=" " />
                         <div class="ha-carousel-content">
                             <a href="#" class="cat">Business</a>
                             <h2><a href="#!">Businesswoman hand raised for asking the question in the conference</a></h2>
@@ -146,7 +141,7 @@
                     <div class="col-md-6">
                         <div class="post-block">
                             <div class="post-thumb">
-                                <a href="#"><img class="img-fluid" src="assets/img/img-thumb-sm.jpg" alt=""></a>
+                                <a href="#"><img class="img-fluid" src="<?php echo get_template_directory_uri();?>/assets/img/img-thumb-sm.jpg" alt=""></a>
                             </div>
                             <div class="post-content">
                                 <h2 class="post-title title-sm">
@@ -165,7 +160,7 @@
                     <div class="col-md-6">
                         <div class="post-block">
                             <div class="post-thumb">
-                                <a href="#"><img class="img-fluid" src="assets/img/img-thumb-sm2.jpg" alt=""></a>
+                                <a href="#"><img class="img-fluid" src="<?php echo get_template_directory_uri();?>/assets/img/img-thumb-sm2.jpg" alt=""></a>
                             </div>
                             <div class="post-content">
                                 <h2 class="post-title title-sm">
@@ -188,7 +183,7 @@
                             <div class="post-full">
                                 <div class="post-block post-list">
                                     <div class="post-thumb">
-                                        <a href="#"><img class="img-fluid" src="assets/img/xs1.jpg" alt=""></a>
+                                        <a href="#"><img class="img-fluid" src="<?php echo get_template_directory_uri();?>/assets/img/xs1.jpg" alt=""></a>
                                     </div>
                                     <div class="post-content">
                                         <h2 class="post-title title-xs">
@@ -208,7 +203,7 @@
                             <div class="post-full">
                                 <div class="post-block post-list">
                                     <div class="post-thumb">
-                                        <a href="#"><img class="img-fluid" src="assets/img/xs2.jpg" alt=""></a>
+                                        <a href="#"><img class="img-fluid" src="<?php echo get_template_directory_uri();?>/assets/img/xs2.jpg" alt=""></a>
                                     </div>
                                     <div class="post-content">
                                         <h2 class="post-title title-xs">
@@ -228,7 +223,7 @@
                             <div class="post-full">
                                 <div class="post-block post-list">
                                     <div class="post-thumb">
-                                        <a href="#"><img class="img-fluid" src="assets/img/xs3.jpg" alt=""></a>
+                                        <a href="#"><img class="img-fluid" src="<?php echo get_template_directory_uri();?>/assets/img/xs3.jpg" alt=""></a>
                                     </div>
                                     <div class="post-content">
                                         <h2 class="post-title title-xs">
@@ -248,7 +243,7 @@
                             <div class="post-full">
                                 <div class="post-block post-list">
                                     <div class="post-thumb">
-                                        <a href="#"><img class="img-fluid" src="assets/img/xs4.jpg" alt=""></a>
+                                        <a href="#"><img class="img-fluid" src="<?php echo get_template_directory_uri();?>/assets/img/xs4.jpg" alt=""></a>
                                     </div>
                                     <div class="post-content">
                                         <h2 class="post-title title-xs">
@@ -268,7 +263,7 @@
                             <div class="post-full">
                                 <div class="post-block post-list">
                                     <div class="post-thumb">
-                                        <a href="#"><img class="img-fluid" src="assets/img/xs5.jpg" alt=""></a>
+                                        <a href="#"><img class="img-fluid" src="<?php echo get_template_directory_uri();?>/assets/img/xs5.jpg" alt=""></a>
                                     </div>
                                     <div class="post-content">
                                         <h2 class="post-title title-xs">
@@ -288,7 +283,7 @@
                             <div class="post-full">
                                 <div class="post-block post-list">
                                     <div class="post-thumb">
-                                        <a href="#"><img class="img-fluid" src="assets/img/xs6.jpg" alt=""></a>
+                                        <a href="#"><img class="img-fluid" src="<?php echo get_template_directory_uri();?>/assets/img/xs6.jpg" alt=""></a>
                                     </div>
                                     <div class="post-content">
                                         <h2 class="post-title title-xs">
@@ -315,7 +310,7 @@
                     <div class="col-md-12">
                         <div class="post-block post-list">
                             <div class="post-thumb">
-                                <a href="#"><img class="img-fluid" src="assets/img/img-thumb-md.jpg" alt=""></a>
+                                <a href="#"><img class="img-fluid" src="<?php echo get_template_directory_uri();?>/assets/img/img-thumb-md.jpg" alt=""></a>
                             </div>
                             <div class="post-content">
                                 <h2 class="post-title title-md">
@@ -335,7 +330,7 @@
                     <div class="col-md-12">
                         <div class="post-block post-list">
                             <div class="post-thumb">
-                                <a href="#"><img class="img-fluid" src="assets/img/img-thumb-md2.jpg" alt=""></a>
+                                <a href="#"><img class="img-fluid" src="<?php echo get_template_directory_uri();?>/assets/img/img-thumb-md2.jpg" alt=""></a>
                             </div>
                             <div class="post-content">
                                 <h2 class="post-title title-md">
@@ -355,7 +350,7 @@
                     <div class="col-md-12">
                         <div class="post-block post-list post-video">
                             <div class="post-thumb">
-                                <img class="img-fluid" src="assets/img/img-thumb-md-b.jpg" alt="">
+                                <img class="img-fluid" src="<?php echo get_template_directory_uri();?>/assets/img/img-thumb-md-b.jpg" alt="">
                                 <a href="https://www.youtube.com/watch?v=I6-bvYNFdUA" class="video-btn popup-youtube"><i class="fa fa-play"></i></a>
                             </div>
                             <div class="post-content">
@@ -418,7 +413,7 @@
                     <div class="col-12">
                         <div class="post-block">
                             <div class="post-thumb">
-                                <a href="#"><img class="img-fluid" src="assets/img/img-big3.jpg" alt=""></a>
+                                <a href="#"><img class="img-fluid" src="<?php echo get_template_directory_uri();?>/assets/img/img-big3.jpg" alt=""></a>
                             </div>
                             <div class="post-content">
                                 <h2 class="post-title title-sm">
@@ -438,7 +433,7 @@
                     <div class="col-md-6">
                         <div class="post-block">
                             <div class="post-thumb">
-                                <a href="#"><img class="img-fluid" src="assets/img/sm1.jpg" alt=""></a>
+                                <a href="#"><img class="img-fluid" src="<?php echo get_template_directory_uri();?>/assets/img/sm1.jpg" alt=""></a>
                             </div>
                             <div class="post-content">
                                 <h2 class="post-title title-sm">
@@ -455,7 +450,7 @@
                         <hr class="ub-divider">
                         <div class="post-block">
                             <div class="post-thumb">
-                                <a href="#"><img class="img-fluid" src="assets/img/sm2.jpg" alt=""></a>
+                                <a href="#"><img class="img-fluid" src="<?php echo get_template_directory_uri();?>/assets/img/sm2.jpg" alt=""></a>
                             </div>
                             <div class="post-content">
                                 <h2 class="post-title title-sm">
@@ -474,7 +469,7 @@
                     <div class="col-md-6">
                         <div class="post-block">
                             <div class="post-thumb">
-                                <a href="#"><img class="img-fluid" src="assets/img/sm3.jpg" alt=""></a>
+                                <a href="#"><img class="img-fluid" src="<?php echo get_template_directory_uri();?>/assets/img/sm3.jpg" alt=""></a>
                             </div>
                             <div class="post-content">
                                 <h2 class="post-title title-sm">
@@ -491,7 +486,7 @@
                         <hr class="ub-divider">
                         <div class="post-block">
                             <div class="post-thumb">
-                                <a href="#"><img class="img-fluid" src="assets/img/sm4.jpg" alt=""></a>
+                                <a href="#"><img class="img-fluid" src="<?php echo get_template_directory_uri();?>/assets/img/sm4.jpg" alt=""></a>
                             </div>
                             <div class="post-content">
                                 <h2 class="post-title title-sm">
@@ -535,7 +530,7 @@
             <!--right sidebar start-->
             <div class="col-md-4">
                 <div class="ads-place widget">
-                    <a href="#"><img class="img-fluid" src="assets/img/w-ads.jpg" alt=""></a>
+                    <a href="#"><img class="img-fluid" src="<?php echo get_template_directory_uri();?>/assets/img/w-ads.jpg" alt=""></a>
                 </div>
                 <div class="widget">
                     <h2 class="post-block-title txt-danger">
@@ -560,7 +555,7 @@
                         <div class="post-full">
                             <div class="post-block post-list">
                                 <div class="post-thumb">
-                                    <a href="#"><img class="img-fluid" src="assets/img/xs1.jpg" alt=""></a>
+                                    <a href="#"><img class="img-fluid" src="<?php echo get_template_directory_uri();?>/assets/img/xs1.jpg" alt=""></a>
                                 </div>
                                 <div class="post-content">
                                     <h2 class="post-title title-xs">
@@ -578,7 +573,7 @@
                         <div class="post-full">
                             <div class="post-block post-list">
                                 <div class="post-thumb">
-                                    <a href="#"><img class="img-fluid" src="assets/img/xs2.jpg" alt=""></a>
+                                    <a href="#"><img class="img-fluid" src="<?php echo get_template_directory_uri();?>/assets/img/xs2.jpg" alt=""></a>
                                 </div>
                                 <div class="post-content">
                                     <h2 class="post-title title-xs">
@@ -596,7 +591,7 @@
                         <div class="post-full">
                             <div class="post-block post-list">
                                 <div class="post-thumb">
-                                    <a href="#"><img class="img-fluid" src="assets/img/xs3.jpg" alt=""></a>
+                                    <a href="#"><img class="img-fluid" src="<?php echo get_template_directory_uri();?>/assets/img/xs3.jpg" alt=""></a>
                                 </div>
                                 <div class="post-content">
                                     <h2 class="post-title title-xs">
@@ -648,7 +643,7 @@
                 <div class="col-md-6 col-12">
                     <div class="footer-info">
                         <div class="f-logo">
-                            <img src="assets/img/logo.png" srcset="assets/img/logo@2x.png 2x" alt="">
+                            <img src="<?php echo get_template_directory_uri();?>/assets/img/logo.png" srcset="<?php echo get_template_directory_uri();?>/assets/img/logo@2x.png 2x" alt="">
                         </div>
                         <p>High school classmates of the gunman who killed nine people</p>
                     </div>
@@ -657,7 +652,7 @@
                         <a href="#"><i class="fa fa-twitter"></i></a>
                         <a href="#"><i class="fa fa-instagram"></i></a>
                         <a href="#"><i class="fa fa-youtube"></i></a>
-                        <a href="#"><img src="assets/img/play-store.jpg" srcset="assets/img/play-store@2x.jpg 2x" alt=""></a>
+                        <a href="#"><img src="<?php echo get_template_directory_uri();?>/assets/img/play-store.jpg" srcset="<?php echo get_template_directory_uri();?>/assets/img/play-store@2x.jpg 2x" alt=""></a>
                     </div>
                 </div>
                 <div class="col-md-2 col-6">
@@ -697,3 +692,5 @@
 wp_footer();
 ?>
 
+</body>
+</html>

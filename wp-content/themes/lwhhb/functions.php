@@ -1,5 +1,9 @@
 <?php
 
+use HasinHayder\WPHelper\Modules\NavMenu;
+
+require_once "inc/wphelper/vendor/autoload.php";
+
 function lwhhb_theme_init() {
 	load_theme_textdomain( 'lwhhb', get_template_directory().'/languages' );
 	add_theme_support( 'automatic-feed-links' );
@@ -32,7 +36,7 @@ function lwhhb_theme_init() {
 
 	register_nav_menus(
 		array(
-			'menu-1' => __( 'Primary', 'lwhhb' ),
+			'primary' => __( 'Primary', 'lwhhb' ),
 		)
 	);
 }
@@ -66,7 +70,7 @@ function lwhhb_scripts() {
 add_action('wp_enqueue_scripts','lwhhb_scripts');
 
 
-/*
 
-<!--init scripts-->
-<script src="assets/js/scripts.min.js"></script>*/
+
+NavMenu::set_li_class('nav-item');
+NavMenu::set_anchor_class('nav-link');

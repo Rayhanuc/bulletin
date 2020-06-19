@@ -62,7 +62,14 @@
                     <div class="col-md-12">
                         <nav class="navbar navbar-expand-lg navbar-light p-0 mb-lg-2 mt-lg-2">
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                <ul class="navbar-nav mr-auto">
+                                <?php 
+                                wp_nav_menu([
+                                    'container'=>'',
+                                    'theme_location' => 'primary',
+                                    'menu_class' => 'navbar-nav mr-auto',
+                                ]);
+                                 ?>
+                                <!-- <ul class="navbar-nav mr-auto">
                                     <li class="nav-item active">
                                         <a class="nav-link" href="index.html">Home</a>
                                     </li>
@@ -81,7 +88,7 @@
                                     <li class="nav-item">
                                         <a class="nav-link" href="contact.html">Contact</a>
                                     </li>
-                                </ul>
+                                </ul> -->
                                 <form class="form-inline header-search float-lg-right">
                                     <i class="fa fa-search"></i>
                                     <input class="form-control" type="text" placeholder="Search" aria-label="Search">

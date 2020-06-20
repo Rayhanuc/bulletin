@@ -13,11 +13,19 @@
         <div class="container">
             <div class="row justify-content-between">
                 <div class="col-md-6">
-                    <ul class="ph-nav">
+                    <!-- <ul class="ph-nav">
                         <li><a href="#">About</a></li>
                         <li><a href="#">Contact</a></li>
                         <li><a href="#">Subscribe</a></li>
-                    </ul>
+                    </ul> -->
+
+                    <?php 
+                    wp_nav_menu([
+                        'container'=>'',
+                        'theme_location' => 'top',
+                        'menu_class' => 'ph-nav',
+                    ]);
+                    ?>
                 </div>
                 <div class="col-md-6">
                     <div class="ph-social-link float-md-right">

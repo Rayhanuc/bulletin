@@ -19,31 +19,30 @@
                 </div>
                 <div class="col-md-2 col-6">
                     <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms & Condition</a></li>
-                    </ul>
+                    <?php 
+                    wp_nav_menu([
+                        'container'=>'',
+                        'theme_location' => 'footer-1',
+                    ]);
+                    ?>
                 </div>
                 <div class="col-md-2 col-6">
                     <h3>Features</h3>
-                    <ul>
-                        <li><a href="#">News</a></li>
-                        <li><a href="#">Business</a></li>
-                        <li><a href="#">Sports</a></li>
-                        <li><a href="#">Travel</a></li>
-                        <li><a href="#">Sports</a></li>
-                    </ul>
+                    <?php 
+                    wp_nav_menu([
+                        'container'=>'',
+                        'theme_location' => 'footer-2',
+                    ]);
+                    ?>
                 </div>
                 <div class="col-md-2 col-6">
                     <h3>More</h3>
-                    <ul>
-                        <li><a href="#">Photos</a></li>
-                        <li><a href="#">Video Gallery</a></li>
-                        <li><a href="#">Most Viewed</a></li>
-                        <li><a href="#">Most Popular</a></li>
-                    </ul>
+                    <?php 
+                    wp_nav_menu([
+                        'container'=>'',
+                        'theme_location' => 'footer-3',
+                    ]);
+                    ?>
                 </div>
             </div>
         </div>

@@ -6,6 +6,7 @@ use HasinHayder\WPHelper\OutputProcessors\PostTemplateProcessor;
 
 class WPHelper {
 
+    private static $textdomain;
     private static function get_processors() {
         return array( PostTemplateProcessor::getInstance() );
     }
@@ -41,4 +42,11 @@ class WPHelper {
         echo $template_data;
     }
 
+    public function get_textdomain() {
+        return self::$textdomain;
+    }
+
+    public function set_textdomain( $textdomain ) {
+        self::$textdomain = $textdomain;
+    }
 }

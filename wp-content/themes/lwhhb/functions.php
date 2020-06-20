@@ -3,6 +3,7 @@
 use HasinHayder\WPHelper\Modules\NavMenu;
 
 require_once "inc/wphelper/vendor/autoload.php";
+require_once get_theme_file_path( 'inc/customizer/kirki_installer.php' );
 
 function lwhhb_theme_init() {
 	load_theme_textdomain( 'lwhhb', get_template_directory().'/languages' );

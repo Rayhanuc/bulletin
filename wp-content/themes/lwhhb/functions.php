@@ -74,3 +74,21 @@ add_action('wp_enqueue_scripts','lwhhb_scripts');
 
 NavMenu::set_li_class('nav-item');
 NavMenu::set_anchor_class('nav-link');
+
+
+function lwhhb_search_form(){
+	$home_url = esc_url(get_home_url('/'));
+	$search_value = esc_attr(get_search_query());
+	$label = __('Search','lwhhb');
+	$form = <<<FORM
+
+	<form action="{$home_url}" method="GET" class="form-inline header-search float-lg-right">
+        <i class="fa fa-search"></i>
+        <input name='s' class="form-control" value='{$search_value}' type="text" placeholder="{$label}" aria-label="{$label}">
+    </form>
+
+FORM;
+
+return $form;
+}
+add_filter('get_search_form','lwhhb_search_form');

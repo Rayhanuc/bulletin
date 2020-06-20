@@ -89,10 +89,13 @@
                                         <a class="nav-link" href="contact.html">Contact</a>
                                     </li>
                                 </ul> -->
-                                <form class="form-inline header-search float-lg-right">
+                                <?php
+                                get_search_form(  );
+                                ?>
+                                <!-- <form class="form-inline header-search float-lg-right">
                                     <i class="fa fa-search"></i>
                                     <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-                                </form>
+                                </form> -->
                             </div>
                         </nav>
                     </div>

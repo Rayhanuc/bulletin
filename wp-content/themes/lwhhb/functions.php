@@ -48,6 +48,7 @@ function lwhhb_theme_init() {
 	);
 
 	add_image_size('lwhh-featured-post',1220,664,true);
+	add_image_size('lwhh-post-thumb',768,504,true);
 }
 
 add_action('after_setup_theme','lwhhb_theme_init');

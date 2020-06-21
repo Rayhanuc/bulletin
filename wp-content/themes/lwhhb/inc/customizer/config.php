@@ -7,3 +7,7 @@ KirkiBuilder::add_section('featured_post','homepage',__('Featured Post','lwhhb')
 KirkiBuilder::add_posts_repeater_field('featured_posts','featured_post','Featured Post');
 
 
+KirkiBuilder::add_section('trending_post','homepage',__('Trending Post','lwhhb'));
+KirkiBuilder::add_posts_repeater_field('tranding_posts','trending_post',__('Trending Post','lwhhb'),__('Select Item','lwhhb'),__('Add Post','lwhhb'),[],2);
+
+

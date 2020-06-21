@@ -47,47 +47,52 @@
                  </h2>
                  <!--post block title end-->
 
+                 <?php
+                 $lwhh_trending_posts = array_column( get_theme_mod( 'tranding_posts', array() ), 'posts' );
+                 if ( count( $lwhh_trending_posts ) > 0 ) {
+                 ?>
+
                  <!--post block start-->
                  <div class="row">
+                    <?php
+                    foreach($lwhh_trending_posts as $lwhh_tp) :
+                    ?>
                      <div class="col-md-6">
                          <div class="post-block">
                              <div class="post-thumb">
-                                 <a href="#"><img class="img-fluid" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/img-thumb-sm.jpg" alt=""></a>
+                                 <a href="<?php echo esc_url( get_the_permalink( $lwhh_tp ) ); ?>">
+                                    <?php
+                                     echo get_the_post_thumbnail( $lwhh_tp, 'lwhh-post-thumb', ['class'=>'img-fluid'] );
+                                         ?>
+                                </a>
                              </div>
                              <div class="post-content">
                                  <h2 class="post-title title-sm">
-                                     <a href="#">Hiker found dead at Circle X Ranch in Santa</a>
+                                     <a href="<?php echo esc_url( get_the_permalink( $lwhh_tp ) ); ?>"><?php echo esc_html(get_the_title($lwhh_tp)) ?></a>
                                  </h2>
-                                 <p>Aenean sollicitudin, lorehis ale bibendum auctor, nisise elit consequat ipsum, necos sagittis sem nibh id elit. Duis seodo lgor amet nibh vulputate cursus a sit amet auris accum</p>
+                                 <?php
+                                echo apply_filters( 'the_content', get_the_excerpt( $lwhh_tp ) );
+                                 ?>
                                  <div class="post-cat">
-                                     <a href="#" class="auth">Scott Green</a>
+                                     <a href="<?php echo esc_url( get_the_permalink( $lwhh_tp ) ); ?>" class="auth">
+                                        <?php echo ucfirst(SinglePost::get_author_name()) ; ?>
+                                            
+                                    </a>
                                      <span>|</span>
-                                     <a href="#" class="">Oct 12, 2019</a>
+                                     <a href="<?php echo esc_url( get_the_permalink( $lwhh_tp ) ); ?>" class=""><?php echo esc_html(get_the_date('M d, Y',$lwhh_tp)); ?></a>
                                  </div>
                              </div>
                          </div>
                          <hr class="ub-divider">
                      </div>
-                     <div class="col-md-6">
-                         <div class="post-block">
-                             <div class="post-thumb">
-                                 <a href="#"><img class="img-fluid" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/img-thumb-sm2.jpg" alt=""></a>
-                             </div>
-                             <div class="post-content">
-                                 <h2 class="post-title title-sm">
-                                     <a href="#">Remembering Flagstaff neighbors: Recent</a>
-                                 </h2>
-                                 <p>Aenean sollicitudin, lorehis ale bibendum auctor, nisise elit consequat ipsum, necos sagittis sem nibh id elit. Duis seodo lgor amet nibh vulputate cursus a sit amet auris accum</p>
-                                 <div class="post-cat">
-                                     <a href="#" class="auth">Scott Green</a>
-                                     <span>|</span>
-                                     <a href="#" class="">Oct 12, 2019</a>
-                                 </div>
-                             </div>
-                         </div>
-                         <hr class="ub-divider">
-                     </div>
+                    <?php
+                    endforeach;
+                    ?>
                  </div>
+
+                 <?php 
+                    }
+                 ?>
                  <div class="row">
                      <div class="col-md-6">
                          <div class="similar-post">

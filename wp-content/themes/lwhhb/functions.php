@@ -5,6 +5,7 @@ use HasinHayder\WPHelper\Modules\NavMenu;
 require_once "inc/wphelper/vendor/autoload.php";
 require_once get_theme_file_path( 'inc/customizer/kirki_installer.php' );
 require_once get_theme_file_path( 'inc/customizer/config.php' );
+// require get_template_directory() . 'inc/customizer/config.php';
 
 function lwhhb_theme_init() {
 	load_theme_textdomain( 'lwhhb', get_template_directory().'/languages' );
@@ -45,6 +46,8 @@ function lwhhb_theme_init() {
 			'footer-3' => __( 'Footer Menu 3', 'lwhhb' ),
 		)
 	);
+
+	add_image_size('lwhh-featured-post',1220,664,true);
 }
 
 add_action('after_setup_theme','lwhhb_theme_init');

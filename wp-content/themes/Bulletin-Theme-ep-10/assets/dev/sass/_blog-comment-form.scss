@@ -1,0 +1,45 @@
+.single-post {
+
+  .comment-respond {
+    margin-bottom: 5rem;
+  }
+  .comment-reply-title {
+    //text-align: center;
+    margin-bottom: 5rem;
+  }
+  .comment-form {
+    .form-group{
+      margin-bottom: 2rem;
+    }
+    .btn {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+    p{
+      //color: $black-lighter;
+    }
+  }
+}
+.btn-black {
+  color: #fff;
+  background: #333;
+  &:hover{
+    color: #fff;
+    background: #f44e4e;
+  }
+}
+
+@media (max-width: 991px) {
+
+  .single-post .comment-reply-title{
+    margin-bottom: 3rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .single-post {
+    .comment-respond {
+      margin-bottom: 2rem;
+    }
+  }
+}

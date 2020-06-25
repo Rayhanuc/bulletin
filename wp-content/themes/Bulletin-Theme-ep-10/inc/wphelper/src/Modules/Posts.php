@@ -3,13 +3,13 @@
 namespace HasinHayder\WPHelper\Modules;
 
 use WP_Query;
-
 class Posts {
     private static $offset = 0;
     public static function set_offset( $offset = 0 ) {
         self::$offset = $offset;
     }
-    private static function get_posts( $wp_query, $return_type = WPHELPER_POSTS_FETCH_OBJECT ) {
+    
+    private static function get_posts( $wp_query, $return_type = WPHELPER_POSTS_FETCH_OBJECT) {
         $_posts = array();
         $post_query = $wp_query;
         while ( $post_query->have_posts() ) {

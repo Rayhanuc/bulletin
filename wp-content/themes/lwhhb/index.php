@@ -1,8 +1,5 @@
-
-
-
-
  <?php
+    use HasinHayder\WPHelper\Modules\Posts;
      use HasinHayder\WPHelper\Modules\SinglePost;
      get_header();
  ?>
@@ -93,20 +90,38 @@
                  <?php 
                     }
                  ?>
+
+                 <?php
+                    $lwhh_trending_category = get_theme_mod('trending_category','');
+                    $lwhh_trending_post_count = get_theme_mod('trending_post_count',6);
+                    if($lwhh_trending_category) {
+                        $lwhh_trending_posts = Posts::get_posts_by_category_id($lwhh_trending_category, $lwhh_trending_post_count);
+                        if ( count( $lwhh_trending_posts ) > 0 ) {
+
+                    ?>
                  <div class="row">
+
+                    <?php
+                    foreach($lwhh_trending_posts as $lwhh_tp) {
+                    ?>
                      <div class="col-md-6">
                          <div class="similar-post">
                              <div class="post-full">
                                  <div class="post-block post-list">
                                      <div class="post-thumb">
-                                         <a href="#"><img class="img-fluid" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/xs1.jpg" alt=""></a>
+                                         <a href="<?php echo esc_url( get_the_permalink( $lwhh_tp ) ); ?>">
+                                            <?php
+                                     echo get_the_post_thumbnail( $lwhh_tp, 'thumbnail', ['class'=>'img-fluid'] );
+                                         ?>
+                                             
+                                         </a>
                                      </div>
                                      <div class="post-content">
                                          <h2 class="post-title title-xs">
-                                             <a href="#">Jessica Simpson Launches Sweet New Collection with Fun Show</a>
+                                             <a href="<?php echo esc_url( get_the_permalink( $lwhh_tp ) ); ?>"><?php echo esc_html(get_the_title($lwhh_tp)) ?></a>
                                          </h2>
                                          <div class="post-cat">
-                                             <a href="#" class="">Oct 12, 2019</a>
+                                             <a href="<?php echo esc_url( get_the_permalink( $lwhh_tp ) ); ?>" class=""><?php echo esc_html(get_the_date('M d, Y',$lwhh_tp)); ?></a>
                                          </div>
                                      </div>
                                  </div>
@@ -114,108 +129,17 @@
                          </div>
                          <hr class="ub-divider">
                      </div>
-                     <div class="col-md-6">
-                         <div class="similar-post">
-                             <div class="post-full">
-                                 <div class="post-block post-list">
-                                     <div class="post-thumb">
-                                         <a href="#"><img class="img-fluid" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/xs2.jpg" alt=""></a>
-                                     </div>
-                                     <div class="post-content">
-                                         <h2 class="post-title title-xs">
-                                             <a href="#">Jessica Simpson Launches Sweet New Collection with Fun Show</a>
-                                         </h2>
-                                         <div class="post-cat">
-                                             <a href="#" class="">Oct 12, 2019</a>
-                                         </div>
-                                     </div>
-                                 </div>
-                             </div>
-                         </div>
-                         <hr class="ub-divider">
-                     </div>
-                     <div class="col-md-6">
-                         <div class="similar-post">
-                             <div class="post-full">
-                                 <div class="post-block post-list">
-                                     <div class="post-thumb">
-                                         <a href="#"><img class="img-fluid" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/xs3.jpg" alt=""></a>
-                                     </div>
-                                     <div class="post-content">
-                                         <h2 class="post-title title-xs">
-                                             <a href="#">Jessica Simpson Launches Sweet New Collection with Fun Show</a>
-                                         </h2>
-                                         <div class="post-cat">
-                                             <a href="#" class="">Oct 12, 2019</a>
-                                         </div>
-                                     </div>
-                                 </div>
-                             </div>
-                         </div>
-                         <hr class="ub-divider">
-                     </div>
-                     <div class="col-md-6">
-                         <div class="similar-post">
-                             <div class="post-full">
-                                 <div class="post-block post-list">
-                                     <div class="post-thumb">
-                                         <a href="#"><img class="img-fluid" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/xs4.jpg" alt=""></a>
-                                     </div>
-                                     <div class="post-content">
-                                         <h2 class="post-title title-xs">
-                                             <a href="#">Jessica Simpson Launches Sweet New Collection with Fun Show</a>
-                                         </h2>
-                                         <div class="post-cat">
-                                             <a href="#" class="">Oct 12, 2019</a>
-                                         </div>
-                                     </div>
-                                 </div>
-                             </div>
-                         </div>
-                         <hr class="ub-divider">
-                     </div>
-                     <div class="col-md-6">
-                         <div class="similar-post">
-                             <div class="post-full">
-                                 <div class="post-block post-list">
-                                     <div class="post-thumb">
-                                         <a href="#"><img class="img-fluid" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/xs5.jpg" alt=""></a>
-                                     </div>
-                                     <div class="post-content">
-                                         <h2 class="post-title title-xs">
-                                             <a href="#">Jessica Simpson Launches Sweet New Collection with Fun Show</a>
-                                         </h2>
-                                         <div class="post-cat">
-                                             <a href="#" class="">Oct 12, 2019</a>
-                                         </div>
-                                     </div>
-                                 </div>
-                             </div>
-                         </div>
-                         <hr class="ub-divider">
-                     </div>
-                     <div class="col-md-6">
-                         <div class="similar-post">
-                             <div class="post-full">
-                                 <div class="post-block post-list">
-                                     <div class="post-thumb">
-                                         <a href="#"><img class="img-fluid" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/xs6.jpg" alt=""></a>
-                                     </div>
-                                     <div class="post-content">
-                                         <h2 class="post-title title-xs">
-                                             <a href="#">Jessica Simpson Launches Sweet New Collection with Fun Show</a>
-                                         </h2>
-                                         <div class="post-cat">
-                                             <a href="#" class="">Oct 12, 2019</a>
-                                         </div>
-                                     </div>
-                                 </div>
-                             </div>
-                         </div>
-                         <hr class="ub-divider">
-                     </div>
+                     <?php
+                    }
+                     ?>
+                     
                  </div>
                  <!--post block end-->
+                <?php
+                } 
+                }
+                ?>
+                 
 
                  <!--post block title start-->
                  <h2 class="post-block-title txt-danger">

@@ -14,6 +14,7 @@ function lwhhb_theme_init() {
 	add_theme_support( 'post-thumbnails' );
 	add_theme_support( 'customize-selective-refresh-widgets' );
 	add_theme_support( 'editor-styles' );
+	add_theme_support( 'post-formats', array('gallery','video','audio') );
 	add_theme_support(
 		'html5',
 		array(

@@ -72,7 +72,7 @@
                                  ?>
                                  <div class="post-cat">
                                      <a href="<?php echo esc_url( get_the_permalink( $lwhh_tp ) ); ?>" class="auth">
-                                        <?php echo ucfirst(SinglePost::get_author_name()) ; ?>
+                                        <?php echo ucfirst(SinglePost::get_author_name($lwhh_tp)) ; ?>
                                             
                                     </a>
                                      <span>|</span>
@@ -146,61 +146,46 @@
                      Latest News
                  </h2>
                  <!--post block title end-->
+
+                 <?php
+                 $lwhh_latest_posts = Posts::get_latest_posts(get_option('posts_per_page'));
+                 foreach($lwhh_latest_posts as $lwhh_lp) {
+                    $lwhh_extra = '';
+                    if (get_post_format($lwhh_lp) == 'video') {
+                        $lwhh_extra = 'post-video';
+                    }
+                 ?>
                  <div class="row">
                      <div class="col-md-12">
-                         <div class="post-block post-list">
-                             <div class="post-thumb">
-                                 <a href="#"><img class="img-fluid" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/img-thumb-md.jpg" alt=""></a>
-                             </div>
+                         <div class="post-block post-list <?php echo esc_attr($lwhh_extra); ?> ">
+                            <?php if (has_post_thumbnail(  )): ?>
+                                <div class="post-thumb">
+
+                                <a href="<?php echo esc_url( get_the_permalink( $lwhh_lp ) ); ?>">
+                                    <?php
+                                     echo get_the_post_thumbnail( $lwhh_lp, 'lwhh-post-thumb', ['class'=>'img-fluid'] );
+                                         ?>
+                                </a>
+                                <?php
+                                if (get_post_format($lwhh_lp) == 'video') {
+                                        echo '<a href="https://www.youtube.com/watch?v=I6-bvYNFdUA" class="video-btn popup-youtube"><i class="fa fa-play"></i></a>';
+                                    }
+                                ?>
+                                </div>
+                                <?php endif ?>
+
                              <div class="post-content">
                                  <h2 class="post-title title-md">
-                                     <a href="#">Beauty must-have: A luxurious body perfume from Milan city</a>
+                                     <a href="<?php echo esc_url( get_the_permalink( $lwhh_lp ) ); ?>"><?php echo esc_html(get_the_title($lwhh_lp)); ?></a>
                                  </h2>
-                                 <p>Aenean sollicitudin, lorehis ale bibendum auctor, nisise elit consequat ipsum, necos sagittis sem nibh id elit. Duis seodo lgor amet nibh vulputate cursus a sit amet auris accum</p>
+                                 <?php
+                                 echo apply_filters( 'the_content', get_the_excerpt( $lwhh_tp ) );
+                                  ?>
                                  <div class="post-cat">
-                                     <a href="#" class="auth">Scott Green</a>
-                                     <a href="#" class="">Oct 2, 2019</a>
-                                 </div>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-                 <hr class="ub-divider">
-                 <div class="row">
-                     <div class="col-md-12">
-                         <div class="post-block post-list">
-                             <div class="post-thumb">
-                                 <a href="#"><img class="img-fluid" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/img-thumb-md2.jpg" alt=""></a>
-                             </div>
-                             <div class="post-content">
-                                 <h2 class="post-title title-md">
-                                     <a href="#">Beauty must-have: A luxurious body perfume from Milan city</a>
-                                 </h2>
-                                 <p>Aenean sollicitudin, lorehis ale bibendum auctor, nisise elit consequat ipsum, necos sagittis sem nibh id elit. Duis seodo lgor amet nibh vulputate cursus a sit amet auris accum</p>
-                                 <div class="post-cat">
-                                     <a href="#" class="auth">Scott Green</a>
-                                     <a href="#" class="">Oct 2, 2019</a>
-                                 </div>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-                 <hr class="ub-divider">
-                 <div class="row">
-                     <div class="col-md-12">
-                         <div class="post-block post-list post-video">
-                             <div class="post-thumb">
-                                 <img class="img-fluid" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/img-thumb-md-b.jpg" alt="">
-                                 <a href="https://www.youtube.com/watch?v=I6-bvYNFdUA" class="video-btn popup-youtube"><i class="fa fa-play"></i></a>
-                             </div>
-                             <div class="post-content">
-                                 <h2 class="post-title title-md">
-                                     <a href="#">Beauty must-have: A luxurious body perfume from Milan city</a>
-                                 </h2>
-                                 <p>Aenean sollicitudin, lorehis ale bibendum auctor, nisise elit consequat ipsum, necos sagittis sem nibh id elit. Duis seodo lgor amet nibh vulputate cursus a sit amet auris accum</p>
-                                 <div class="post-cat">
-                                     <a href="#" class="auth">Scott Green</a>
-                                     <a href="#" class="">Oct 2, 2019</a>
+                                     <a href="<?php echo esc_url( get_the_permalink( $lwhh_lp ) ); ?>" class="auth">
+                                        <?php echo ucfirst(SinglePost::get_author_name( $lwhh_lp)) ; ?>
+                                     </a>
+                                     <a href="<?php echo esc_url( get_the_permalink( $lwhh_lp ) ); ?>" class=""><?php echo esc_html(get_the_date('M d, Y',$lwhh_lp)); ?></a>
                                  </div>
                              </div>
                          </div>
@@ -208,40 +193,7 @@
                  </div>
                  <hr class="ub-divider">
 
-                 <div class="row">
-                     <div class="col-md-12">
-                         <div class="post-block post-list">
-                             <div class="post-content">
-                                 <h2 class="post-title title-md">
-                                     <a href="#">Bipartisan ‘red flag’ gun laws plan has support in Congress</a>
-                                 </h2>
-                                 <p>High school classmates of the gunman who killed nine people in Dayton, Ohio, say he was suspended years ago for compiling Ohio, say he was suspended years ago for compiling</p>
-                                 <div class="post-cat">
-                                     <a href="#" class="auth">Scott Green</a>
-                                     <a href="#" class="">Oct 2, 2019</a>
-                                 </div>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-                 <hr class="ub-divider">
-                 <div class="row">
-                     <div class="col-md-12">
-                         <div class="post-block post-list">
-                             <div class="post-content">
-                                 <h2 class="post-title title-md">
-                                     <a href="#">He went to jail as a fake doctor. Now he’s a real one: The saga of Adam Litwin, MD</a>
-                                 </h2>
-                                 <p>High school classmates of the gunman who killed nine people in Dayton, Ohio, say he was suspended years ago for compiling Ohio, say he was suspended years ago for compiling</p>
-                                 <div class="post-cat">
-                                     <a href="#" class="auth">Scott Green</a>
-                                     <a href="#" class="">Oct 2, 2019</a>
-                                 </div>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-                 <hr class="ub-divider">
+                <?php } ?>
 
                  <!--post block title start-->
                  <h2 class="post-block-title txt-danger">

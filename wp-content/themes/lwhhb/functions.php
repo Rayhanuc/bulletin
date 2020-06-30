@@ -1,6 +1,7 @@
 <?php
 
 use HasinHayder\WPHelper\Modules\NavMenu;
+use HasinHayder\WPHelper\Modules\Metabox;
 
 require_once "inc/wphelper/vendor/autoload.php";
 require_once get_theme_file_path( 'inc/customizer/kirki_installer.php' );
@@ -85,7 +86,18 @@ add_action('wp_enqueue_scripts','lwhhb_scripts');
 
 NavMenu::set_li_class('nav-item');
 NavMenu::set_anchor_class('nav-link');
+Metabox::display_metabox('Video Settings','Add your video url',array('post'),[
+	['type'=>'text','title'=>'Video Url','id'=>'video_url']
+], function($post_id){
+	return get_post_format( $post_id ) == 'video';
+},'advanced','default','lwhhb');
 
+/*Metabox::display_metabox( 'Video Settings', 'Add your video url', array('post'), array(
+    array('type' => 'text', 'title' => 'Video Url', 'id' => 'video_url'),
+), function ( $post_id ) {
+    return get_post_format( $post_id ) == 'video';
+}, 'advanced', 'default', 'lwhhb' );
+*/
 
 function lwhhb_search_form(){
 	$home_url = esc_url(get_home_url('/'));
@@ -103,3 +115,13 @@ FORM;
 return $form;
 }
 add_filter('get_search_form','lwhhb_search_form');
+
+function lwhh_container_class() {
+	$lwhh_sidebar_display = get_theme_mod('sidebar_diplay','on');
+	if('on'==$lwhh_sidebar_display){
+		echo 'col-md-8';
+	}else {
+		echo 'col-md-12';
+
+	}
+}

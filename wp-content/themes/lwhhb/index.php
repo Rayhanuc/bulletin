@@ -1,6 +1,7 @@
  <?php
     use HasinHayder\WPHelper\Modules\Posts;
      use HasinHayder\WPHelper\Modules\SinglePost;
+     use HasinHayder\WPHelper\Modules\Metabox;
      get_header();
  ?>
      <!--mid content start-->
@@ -9,7 +10,7 @@
      <div class="container">
          <div class="row">
              <!--left sidebar start-->
-             <div class="col-md-8">
+             <div class="<?php lwhh_container_class(); ?>">
                  <?php
                      $lwhh_featured_posts = array_column( get_theme_mod( 'featured_posts', array() ), 'posts' );
                      if ( count( $lwhh_featured_posts ) > 0 ) {
@@ -168,7 +169,8 @@
                                 </a>
                                 <?php
                                 if (get_post_format($lwhh_lp) == 'video') {
-                                        echo '<a href="https://www.youtube.com/watch?v=I6-bvYNFdUA" class="video-btn popup-youtube"><i class="fa fa-play"></i></a>';
+                                        $lwhh_video_url = Metabox::get_meta_value($lwhh_lp->ID,'video_url');
+                                        echo '<a href="'.esc_url($lwhh_video_url).'" class="video-btn popup-youtube"><i class="fa fa-play"></i></a>';
                                     }
                                 ?>
                                 </div>
@@ -197,104 +199,112 @@
 
                  <!--post block title start-->
                  <h2 class="post-block-title txt-danger">
-                     Travel News
+                     <?php
+                     echo esc_html(get_theme_mod('bottom_header'));
+                     ?>
                  </h2>
                  <!--post block title end-->
 
+                 <h1 style="color:red">Current running this area start</h1>
+
+                 <?php
+                 $bottom_featured_post = get_theme_mod('bottom_featured_post');
+                 if($bottom_featured_post){
+                    $lwhh_bp = get_post($bottom_featured_post);
+                 
+                 ?>
                  <div class="row mb-4">
                      <div class="col-12">
                          <div class="post-block">
                              <div class="post-thumb">
-                                 <a href="#"><img class="img-fluid" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/img-big3.jpg" alt=""></a>
+                                <a href="<?php echo esc_url( get_the_permalink( $lwhh_bp ) ); ?>">
+                                 <?php
+                                     echo get_the_post_thumbnail( $lwhh_bp, 'lwhh-featured-post', ['class'=>'img-fluid'] );
+                                         ?>    
+                                 </a>
                              </div>
                              <div class="post-content">
                                  <h2 class="post-title title-sm">
-                                     <a href="#">Hiker found dead at Circle X Ranch in Santa</a>
+                                     <a href="<?php echo esc_url( get_the_permalink( $lwhh_bp ) ); ?>">
+                                        <?php echo esc_html(get_the_title($lwhh_bp)) ?>
+                                     </a>
                                  </h2>
-                                 <p>Aenean sollicitudin, lorehis ale bibendum auctor, nisise elit consequat ipsum, necos sagittis sem nibh id elit. Duis seodo lgor amet nibh vulputate cursus a sit amet auris accum</p>
-                                 <div class="post-cat">
-                                     <a href="#" class="auth">Scott Green</a>
+                                 <?php
+                                echo apply_filters( 'the_content', get_the_excerpt( $lwhh_bp ) );
+                                 ?>
+                                  <div class="post-cat">
+                                     <a href="<?php echo esc_url( get_the_permalink( $lwhh_bp ) ); ?>" class="auth">
+                                        <?php echo ucfirst(SinglePost::get_author_name($lwhh_bp)) ; ?>
+                                     </a>
                                      <span>|</span>
-                                     <a href="#" class="">Oct 12, 2019</a>
+                                     <a href="<?php echo esc_url( get_the_permalink( $lwhh_bp ) ); ?>" class="">
+                                        <?php echo esc_html(get_the_date('M d, Y',$lwhh_bp)); ?>
+                                     </a>
                                  </div>
                              </div>
                          </div>
                      </div>
                  </div>
-                 <div class="row">
+             <?php } ?>
+                 <!-- Only for test perpus -->
+                 <h1 style="color:red">Current running this area end</h1>
+
+
+
+                 <?php 
+                 $lwhh_bottom_category = get_theme_mod('bottom_category');
+                 $lwhh_bottom_post_count = get_theme_mod('bottom_post_count', 6);
+                 if($lwhh_bottom_category) {
+                    $lwhh_bottom_posts = Posts::get_posts_by_category_id( $lwhh_bottom_category, $lwhh_bottom_post_count );
+                    if(count($lwhh_bottom_posts) > 0){
+
+
+                  ?>
+                 <div class="row">                    
+                    <?php
+                    foreach ($lwhh_bottom_posts as $lwhh_bp){
+                    ?>
                      <div class="col-md-6">
                          <div class="post-block">
                              <div class="post-thumb">
-                                 <a href="#"><img class="img-fluid" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/sm1.jpg" alt=""></a>
+                                 <a href="<?php echo esc_url( get_the_permalink( $lwhh_bp ) ); ?>">
+                                 <?php
+                                     echo get_the_post_thumbnail( $lwhh_bp, 'lwhh-post-thumb', ['class'=>'img-fluid'] );
+                                         ?>    
+                                 </a>
                              </div>
                              <div class="post-content">
                                  <h2 class="post-title title-sm">
-                                     <a href="#">Hiker found dead at Circle X Ranch in Santa</a>
+                                     <a href="<?php echo esc_url( get_the_permalink( $lwhh_bp ) ); ?>">
+                                        <?php echo esc_html(get_the_title($lwhh_bp)) ?>
+                                     </a>
                                  </h2>
-                                 <p>Aenean sollicitudin, lorehis ale bibendum auctor, nisise elit consequat ipsum, necos sagittis sem nibh id elit. Duis seodo lgor amet nibh vulputate cursus a sit amet auris accum</p>
+                                 <?php
+                                echo apply_filters( 'the_content', get_the_excerpt( $lwhh_bp ) );
+                                 ?>
                                  <div class="post-cat">
-                                     <a href="#" class="auth">Scott Green</a>
+                                     <a href="<?php echo esc_url( get_the_permalink( $lwhh_bp ) ); ?>" class="auth">
+                                        <?php echo ucfirst(SinglePost::get_author_name($lwhh_bp)) ; ?>
+                                     </a>
                                      <span>|</span>
-                                     <a href="#" class="">Oct 12, 2019</a>
-                                 </div>
-                             </div>
-                         </div>
-                         <hr class="ub-divider">
-                         <div class="post-block">
-                             <div class="post-thumb">
-                                 <a href="#"><img class="img-fluid" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/sm2.jpg" alt=""></a>
-                             </div>
-                             <div class="post-content">
-                                 <h2 class="post-title title-sm">
-                                     <a href="#">Hiker found dead at Circle X Ranch in Santa</a>
-                                 </h2>
-                                 <p>Aenean sollicitudin, lorehis ale bibendum auctor, nisise elit consequat ipsum, necos sagittis sem nibh id elit. Duis seodo lgor amet nibh vulputate cursus a sit amet auris accum</p>
-                                 <div class="post-cat">
-                                     <a href="#" class="auth">Scott Green</a>
-                                     <span>|</span>
-                                     <a href="#" class="">Oct 12, 2019</a>
+                                     <a href="<?php echo esc_url( get_the_permalink( $lwhh_bp ) ); ?>" class="">
+                                        <?php echo esc_html(get_the_date('M d, Y',$lwhh_bp)); ?>
+                                     </a>
                                  </div>
                              </div>
                          </div>
                          <hr class="ub-divider">
                      </div>
-                     <div class="col-md-6">
-                         <div class="post-block">
-                             <div class="post-thumb">
-                                 <a href="#"><img class="img-fluid" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/sm3.jpg" alt=""></a>
-                             </div>
-                             <div class="post-content">
-                                 <h2 class="post-title title-sm">
-                                     <a href="#">Remembering Flagstaff neighbors: Recent</a>
-                                 </h2>
-                                 <p>Aenean sollicitudin, lorehis ale bibendum auctor, nisise elit consequat ipsum, necos sagittis sem nibh id elit. Duis seodo lgor amet nibh vulputate cursus a sit amet auris accum</p>
-                                 <div class="post-cat">
-                                     <a href="#" class="auth">Scott Green</a>
-                                     <span>|</span>
-                                     <a href="#" class="">Oct 12, 2019</a>
-                                 </div>
-                             </div>
-                         </div>
-                         <hr class="ub-divider">
-                         <div class="post-block">
-                             <div class="post-thumb">
-                                 <a href="#"><img class="img-fluid" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/sm4.jpg" alt=""></a>
-                             </div>
-                             <div class="post-content">
-                                 <h2 class="post-title title-sm">
-                                     <a href="#">Hiker found dead at Circle X Ranch in Santa</a>
-                                 </h2>
-                                 <p>Aenean sollicitudin, lorehis ale bibendum auctor, nisise elit consequat ipsum, necos sagittis sem nibh id elit. Duis seodo lgor amet nibh vulputate cursus a sit amet auris accum</p>
-                                 <div class="post-cat">
-                                     <a href="#" class="auth">Scott Green</a>
-                                     <span>|</span>
-                                     <a href="#" class="">Oct 12, 2019</a>
-                                 </div>
-                             </div>
-                         </div>
-                         <hr class="ub-divider">
-                     </div>
+                     <?php 
+                    }
+                     ?>
+
                  </div>
+                 <?php
+                 }
+                 }
+                 ?>
+
 
                  <!--<a href="#!" class="more-news-btn">Load More News ...</a>-->
 
@@ -319,6 +329,10 @@
              </div>
              <!--left sidebar end-->
 
+            <?php
+            $lwhh_sidebar_display = get_theme_mod('sidebar_diplay','on');
+            if('on' == $lwhh_sidebar_display):
+            ?>
              <!--right sidebar start-->
              <div class="col-md-4">
                  <div class="ads-place widget">
@@ -424,6 +438,8 @@
 
              </div>
              <!--right sidebar end-->
+            <?php endif; ?>
+
          </div>
      </div>
      <!--mid content end-->

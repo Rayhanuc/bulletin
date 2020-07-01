@@ -27,8 +27,11 @@ get_header();
         <div class="<?php lwhh_container_class(); ?>">
 
             <?php
-            $lwhh_latest_posts = Posts::get_latest_posts(get_option('posts_per_page'));
-            foreach($lwhh_latest_posts as $lwhh_lp) {
+            /*$lwhh_latest_posts = Posts::get_latest_posts(get_option('posts_per_page'));
+            foreach($lwhh_latest_posts as $lwhh_lp) {*/
+            while(have_posts()) {
+                the_post();
+                $lwhh_lp = $post;
                $lwhh_extra = '';
                if (get_post_format($lwhh_lp) == 'video') {
                    $lwhh_extra = 'post-video';

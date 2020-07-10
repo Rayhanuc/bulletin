@@ -76,6 +76,7 @@ class KirkiBuilder {
     static function add_select_field( $field_id, $section_id, $title, $multiple = 0, $choices = array(), $default = '', $priority = 10, $active_callback = null ) {
         if ( class_exists( 'Kirki' ) ) {
             $textdomain = WPHelper::get_textdomain();
+            $choices = count( $choices ) == 0 ? \Kirki_Helper::get_posts( array( 'posts_per_page' => -1 ) ) : $choices;
             $config = array(
                 'type'     => 'select',
                 'settings' => $field_id,
@@ -97,7 +98,7 @@ class KirkiBuilder {
         if ( class_exists( 'Kirki' ) ) {
             $textdomain = WPHelper::get_textdomain();
             $config = array(
-                'type'     => 'select',
+                'type'     => $type,
                 'settings' => $field_id,
                 'label'    => esc_html__( $title, $textdomain ),
                 'section'  => $section_id,
@@ -112,7 +113,7 @@ class KirkiBuilder {
         }
     }
 
-    static function add_category_select_field( $field_id, $section_id, $title, $multiple = 0, $choices = array(), $default = '', $priority = 10, $active_callback = null ) {
+    static function add_category_select_field( $field_id, $section_id, $title, $choices = array(), $default = '', $priority = 10, $active_callback = null ) {
         if ( class_exists( 'Kirki' ) ) {
             $textdomain = WPHelper::get_textdomain();
             $choices = count( $choices ) == 0 ? Categories::get_all_categories() : $choices;

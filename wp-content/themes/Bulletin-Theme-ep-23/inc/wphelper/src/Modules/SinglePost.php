@@ -26,7 +26,7 @@ class SinglePost {
         return $_meta_value ? $_meta_value : $default;
     }
 
-    static function get_categories( $post_id = null, $count = WPHELPER_ALL_CATEGORIES, $return_type = WPHELPER_TAXONOMY_NAME ) {
+    static function get_categories( $post_id = null, $count = 0, $return_type = WPHELPER_TAXONOMY_NAME ) {
         $post_id = self::get_post_id($post_id);
         $_categories = wp_get_post_categories( $post_id, array( 'fields' => 'all', 'number' => $count ) );
         
@@ -54,5 +54,13 @@ class SinglePost {
         $_single_tag = array_shift( $_tags );
         
         return TaxonomyOutputProcessor::single_category_output( $_single_tag, $return_type );
+    }
+    
+    static function get_author_name( $post_id = null ) {
+        $post_id = self::get_post_id($post_id);
+        $_post = get_post($post_id);
+        $_author_id = $_post->post_author;
+        $_author_name = get_the_author_meta( 'display_name', $_author_id );
+        return $_author_name;
     }
 }

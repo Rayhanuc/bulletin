@@ -5,7 +5,7 @@
         wp_head();
     ?>
 </head>
-<body>
+<body <?php body_class();?>>
 
     <!--pre header start-->
     <div class="pre-header">

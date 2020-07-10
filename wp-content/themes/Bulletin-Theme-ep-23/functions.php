@@ -1,6 +1,8 @@
 <?php
 
+use HasinHayder\WPHelper\Modules\Metabox;
 use HasinHayder\WPHelper\Modules\NavMenu;
+use HasinHayder\WPHelper\Modules\SinglePost;
 
 require_once "inc/wphelper/vendor/autoload.php";
 require_once "inc/customizer/kirki_installer.php";
@@ -13,6 +15,7 @@ function lwhhb_theme_init() {
     add_theme_support( 'post-thumbnails' );
     add_theme_support( 'customize-selective-refresh-widgets' );
     add_theme_support( 'editor-styles' );
+    add_theme_support( 'post-formats', array( 'video' ) );
     add_theme_support(
         'html5',
         array(
@@ -47,6 +50,7 @@ function lwhhb_theme_init() {
     );
 
     add_image_size( 'lwhh-featured-post', 1220, 664, true );
+    add_image_size( 'lwhh-post-thumb', 768, 504, true );
 
 }
 add_action( 'after_setup_theme', 'lwhhb_theme_init' );
@@ -62,10 +66,10 @@ function lwhhb_scripts() {
     wp_enqueue_style( 'lwhh-css', get_theme_file_uri( 'assets/css/main.css' ) );
     wp_enqueue_style( 'lwhhb-main-css', get_stylesheet() );
 
-    wp_enqueue_script( 'bootstrap-js', get_theme_file_uri( 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' ), array('jquery'), '1.0', true );
-    wp_enqueue_script( 'owlcarousel-js', get_theme_file_uri( 'assets/vendor/owl/owl.carousel.min.js' ), array('jquery'), '1.0', true );
-    wp_enqueue_script( 'magnific-js', get_theme_file_uri( 'assets/vendor/magnific-popup/jquery.magnific-popup.min.js' ), array('jquery'), '1.0', true );
-    wp_enqueue_script( 'lwhh-js', get_theme_file_uri( 'assets/js/scripts.js' ), array('jquery'), time(), true );
+    wp_enqueue_script( 'bootstrap-js', get_theme_file_uri( 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' ), array( 'jquery' ), '1.0', true );
+    wp_enqueue_script( 'owlcarousel-js', get_theme_file_uri( 'assets/vendor/owl/owl.carousel.min.js' ), array( 'jquery' ), '1.0', true );
+    wp_enqueue_script( 'magnific-js', get_theme_file_uri( 'assets/vendor/magnific-popup/jquery.magnific-popup.min.js' ), array( 'jquery' ), '1.0', true );
+    wp_enqueue_script( 'lwhh-js', get_theme_file_uri( 'assets/js/scripts.js' ), array( 'jquery' ), time(), true );
 
 }
 add_action( 'wp_enqueue_scripts', 'lwhhb_scripts' );
@@ -86,3 +90,55 @@ add_filter( 'get_search_form', 'lwhhb_search_form' );
 
 NavMenu::set_li_class( 'nav-item' );
 NavMenu::set_anchor_class( 'nav-link' );
+
+Metabox::display_metabox( 'Video Settings', 'Add your video url', array('post'), array(
+    array('type' => 'text', 'title' => 'Video Url', 'id' => 'video_url'),
+), function ( $post_id ) {
+    return get_post_format( $post_id ) == 'video';
+}, 'advanced', 'default', 'lwhhb' );
+
+
+function lwhh_container_class(){
+    $lwhh_sidebar_display = get_theme_mod('sidebar_display','on');
+    if('on'==$lwhh_sidebar_display){
+        echo 'col-md-8';
+    }else{
+        echo 'col-md-12';
+    }
+}
+
+function lwhh_paginate_links($mid_size=3){
+    global $wp_query;
+    $big = 999999999; // need an unlikely integer
+    $links = paginate_links(array(
+        'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
+        'format' => '?paged=%#%',
+        'current' => max(1, get_query_var('paged')),
+        'total' => $wp_query->max_num_pages,
+        'type' => 'array',
+        'prev_next' => true,
+        'prev_text' => '<i class="fa fa-angle-double-left"></i> newer posts',
+        'next_text' => 'older posts <i class="fa fa-angle-double-right"></i>',
+        'mid_size' => $mid_size
+    ));
+    if ($links) {
+        foreach ($links as $link) {
+            if (strpos($link, "current") !== false){
+                echo '<li class="page-item disabled active"><a class="page-link" href="#">' . $link . "<a/></li>\n";
+            }
+            else{
+                $link = str_replace('page-numbers','page-link',$link);
+                echo '<li class="page-item">' . $link . "</li>\n";
+            }
+        }
+    }
+}
+function lwhh_dipslay_categories(){
+    $categories = SinglePost::get_categories(null,0,WPHELPER_TAXONOMY_LIST_LINK);
+    echo join('',$categories);
+}
+function lwhh_dipslay_tags(){
+    $tags = join('',SinglePost::get_tags(null,WPHELPER_TAXONOMY_LINK));
+    $tags = str_replace('<a','<a class="tag-list"', $tags);
+    echo $tags;
+}

@@ -26,7 +26,7 @@ class SinglePost {
         return $_meta_value ? $_meta_value : $default;
     }
 
-    static function get_categories( $post_id = null, $count = WPHELPER_ALL_CATEGORIES, $return_type = WPHELPER_TAXONOMY_NAME ) {
+    static function get_categories( $post_id = null, $count = 0, $return_type = WPHELPER_TAXONOMY_NAME ) {
         $post_id = self::get_post_id($post_id);
         $_categories = wp_get_post_categories( $post_id, array( 'fields' => 'all', 'number' => $count ) );
         

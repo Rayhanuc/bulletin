@@ -2,6 +2,7 @@
 
 use HasinHayder\WPHelper\Modules\NavMenu;
 use HasinHayder\WPHelper\Modules\Metabox;
+use HasinHayder\WPHelper\Modules\SinglePost;
 
 require_once "inc/wphelper/vendor/autoload.php";
 require_once get_theme_file_path( 'inc/customizer/kirki_installer.php' );
@@ -153,4 +154,26 @@ function lwhh_paginate_links($mid_size=3) {
 		}
 	}
 
+}
+
+/*function lwhh_display_categories(){
+	$categories = SinglePost::get_categories(null,0,WPHELPER_TEXONOMY_LIST_LINK);
+	echo join('',$categories);
+}
+
+function lwhh_display_tags(){
+	$tags = join('',SinglePost::get_tags(null,WPHELPER_TEXONOMY_LINK));
+	$tags = str_replace('<a','<a class="tag-list"',$tags);
+	echo $tags;
+}*/
+
+
+function lwhh_display_categories(){
+    $categories = SinglePost::get_categories(null,0,WPHELPER_TAXONOMY_LIST_LINK);
+    echo join('',$categories);
+}
+function lwhh_display_tags(){
+    $tags = join('',SinglePost::get_tags(null,WPHELPER_TAXONOMY_LINK));
+    $tags = str_replace('<a','<a class="tag-list"', $tags);
+    echo $tags;
 }

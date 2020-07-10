@@ -177,3 +177,13 @@ function lwhh_display_tags(){
     $tags = str_replace('<a','<a class="tag-list"', $tags);
     echo $tags;
 }
+
+
+function lwhh_comment_fields($fields) {
+	$comment_field = $fields['comment'];
+	unset($fields);
+	$fields['comment'] = $comment_field;
+
+	return $fields;
+}
+add_filter('comment_form_fields','lwhh_comment_fields');

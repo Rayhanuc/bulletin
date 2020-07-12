@@ -142,3 +142,4 @@ function lwhh_dipslay_tags(){
     $tags = str_replace('<a','<a class="tag-list"', $tags);
     echo $tags;
 }
+

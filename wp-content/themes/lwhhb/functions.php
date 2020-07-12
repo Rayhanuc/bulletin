@@ -180,10 +180,10 @@ function lwhh_display_tags(){
 
 
 function lwhh_comment_fields($fields) {
-	$comment_field = $fields['comment'];
-	unset($fields);
-	$fields['comment'] = $comment_field;
+    $comment_field = $fields['comment'];
+    unset($fields);
+    $fields['comment'] = $comment_field;
 
-	return $fields;
+    return $fields;
 }
 add_filter('comment_form_fields','lwhh_comment_fields');

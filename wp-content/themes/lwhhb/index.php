@@ -13,7 +13,15 @@ get_header();
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h3 class="search-title"><?php echo get_bloginfo('name'); ?></h3>
+                <h3 class="search-title">
+                    <?php 
+                    if (is_search()) {
+                        echo esc_html(get_search_query(  ));
+                    } else {
+                        echo get_bloginfo('name');
+                    }
+                    ?>                        
+                </h3>
             </div>
         </div>
     </div>

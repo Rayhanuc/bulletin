@@ -35,11 +35,11 @@ get_header();
                                 <a href="#" class=""><?php the_date(); ?></a>
                             </div>
                             <div class="social-share d-inline-block float-lg-right m-lg-0 mb-3 mt-0">
-                                <a href="#!" class="facebook"><i class="fa fa-facebook"></i></a>
-                                <a href="#!" class="twitter"><i class="fa fa-twitter"></i></a>
-                                <a href="#!" class="mail"><i class="fa fa-envelope"></i></a>
-                                <a href="" onclick="javascript:window.print();" class="printer"><i class="fa fa-print"></i></a>
-                                <a href="#!" class="mail"><i class="fa fa-file-pdf-o"></i></a>
+                                <a target="_blank" href="<?php echo esc_url(lwhh_facebook_share_url()); ?>" class="facebook"><i class="fa fa-facebook"></i></a>
+                                <a target="_blank" href="<?php echo esc_url(lwhh_twitter_share_url()); ?>" class="twitter"><i class="fa fa-twitter"></i></a>
+                                <a target="_blank" href="#!" class="mail"><i class="fa fa-envelope"></i></a>
+                                <a target="_blank" href="#!" onclick="javascript:window.print();" class="printer"><i class="fa fa-print"></i></a>
+                                <a target="_blank" href="#!" onclick="javascript:window.print();" class="mail"><i class="fa fa-file-pdf-o"></i></a>
                             </div>
 
                             <?php
@@ -54,11 +54,11 @@ get_header();
                             </div>
 
                             <div class="social-share">
-                                <a href="#!" class="facebook"><i class="fa fa-facebook"></i></a>
-                                <a href="#!" class="twitter"><i class="fa fa-twitter"></i></a>
-                                <a href="#!" class="mail"><i class="fa fa-envelope"></i></a>
-                                <a href="" onclick="javascript:window.print();" class="printer"><i class="fa fa-print"></i></a>
-                                <a href="#!" class="mail"><i class="fa fa-file-pdf-o"></i></a>
+                                <a target="_blank" href="<?php echo esc_url(lwhh_facebook_share_url()); ?>" class="facebook"><i class="fa fa-facebook"></i></a>
+                                <a target="_blank" href="<?php echo esc_url(lwhh_twitter_share_url()); ?>" class="twitter"><i class="fa fa-twitter"></i></a>
+                                <a target="_blank" href="#!" class="mail"><i class="fa fa-envelope"></i></a>
+                                <a target="_blank" href="#!" onclick="javascript:window.print();" class="printer"><i class="fa fa-print"></i></a>
+                                <a target="_blank" href="#!" onclick="javascript:window.print();" class="mail"><i class="fa fa-file-pdf-o"></i></a>
                             </div>
                         </div>
                     </div>

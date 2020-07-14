@@ -187,3 +187,33 @@ function lwhh_comment_fields($fields) {
     return $fields;
 }
 add_filter('comment_form_fields','lwhh_comment_fields');
+
+function lwhh_facebook_share_url(){
+	// Facebook Open Graph
+	return 'https://www.facebook.com/sharer/sharer.php?u='.get_the_permalink();
+}
+
+function lwhh_linkedin_share_url(){
+	// Facebook Open Graph
+	return 'https://www.linkedin.com/sharing/share-offsite/?url='.get_the_permalink();
+}
+
+function lwhh_twitter_share_url(){
+	// Facebook Open Graph
+	return 'https://www.twitter.com/intent/tweet?url='.get_the_permalink().'&text='.get_the_excerpt();
+}
+
+function lwhhb_widgets_init() {
+	register_sidebar(
+		array(
+			'name'          => __( 'Blog Sidebar', 'lwhhb' ),
+			'id'            => 'blog-sidebar',
+			'description'   => __( 'Blog Sidebar', 'lwhhb' ),
+			'before_widget' => '<section id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</section>',
+			'before_title'  => '<h2 class="widget-title post-block-title txt-danger">',
+			'after_title'   => '</h2>',
+		)
+	);
+}
+add_action( 'widgets_init', 'lwhhb_widgets_init' );
